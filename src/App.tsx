@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import React, { useCallback, useState } from "react";
+
+import { Note } from "./types";
+import { NoteForm } from "./components/NoteForm";
+import { NoteList } from "./components/NoteList";
+import { NotePreview } from "./components/NotePreview";
 
 function App() {
+  const [ticketName, setTicketName] = useState("Bugfix");
+  const [notes, setNotes] = useState<Note[]>([]);
+  const onNoteAdd = useCallback((note) => {
+    setNotes((previous) => [...previous, note]);
+  }, []);
+  const onNoteDelete = useCallback((indexToDelete: number): void => {
+    setNotes((previous) =>
+      previous.reduce<Note[]>((agg, note, index) => {
+        if (index !== indexToDelete) agg.push(note);
+        return agg;
+      }, [])
+    );
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <label>
+        Ticket Name
+        <input
+          name="ticket"
+          value={ticketName}
+          onChange={(e) => setTicketName(e.target.value)}
+        />
+      </label>
+      <NoteForm onAdd={onNoteAdd} />
+      <NoteList notes={notes} onDelete={onNoteDelete} />
+      <NotePreview ticketName={ticketName} notes={notes} />
     </div>
   );
 }
