@@ -43,7 +43,7 @@ const PrivateNotes = ({
     <>
       {MajorCategories.map((category) => (
         <>
-          <h4>{category}</h4>
+          <h4 className="title is-4">{category}</h4>
           {notes
             .filter((note) => note.category[0] === category)
             .map((note) => (
@@ -65,12 +65,12 @@ export const ProgrammingSkills = ({
   ticketName,
 }: ProgrammingSkillsProps): React.ReactElement => {
   return (
-    <>
-      <h2>Programming Skills</h2>
-      <h3>Public Notes</h3>
+    <div className="box content">
+      <h2 className="title is-2">Programming Skills</h2>
+      <h3 className="title is-3">Public Notes</h3>
       <PublicNotes notes={notes} />
-      <h3>Private Notes</h3>
+      <h3 className="title is-3">Private Notes</h3>
       <PrivateNotes ticketName={ticketName} notes={notes} />
-    </>
+    </div>
   );
 };

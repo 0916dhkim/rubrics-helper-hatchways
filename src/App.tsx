@@ -1,5 +1,3 @@
-import "./App.css";
-
 import React, { useCallback, useState } from "react";
 
 import { Note } from "./types";
@@ -22,18 +20,33 @@ function App() {
     );
   }, []);
   return (
-    <div className="App">
-      <label>
-        Ticket Name
-        <input
-          name="ticket"
-          value={ticketName}
-          onChange={(e) => setTicketName(e.target.value)}
-        />
-      </label>
-      <NoteForm onAdd={onNoteAdd} />
-      <NoteList notes={notes} onDelete={onNoteDelete} />
-      <NotePreview ticketName={ticketName} notes={notes} />
+    <div className="container">
+      <div className="section">
+        <h1 className="title is-1">Rubrics Helper</h1>
+        <div className="box">
+          <div className="field ">
+            <label className="label">Ticket Name</label>
+            <input
+              className="input"
+              name="ticket"
+              value={ticketName}
+              onChange={(e) => setTicketName(e.target.value)}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="section">
+        <h1 className="title is-1">Add Note</h1>
+        <NoteForm onAdd={onNoteAdd} />
+      </div>
+      <div className="section">
+        <h1 className="title is-1">Notes</h1>
+        <NoteList notes={notes} onDelete={onNoteDelete} />
+      </div>
+      <div className="section">
+        <h1 className="title is-1">Preview</h1>
+        <NotePreview ticketName={ticketName} notes={notes} />
+      </div>
     </div>
   );
 }

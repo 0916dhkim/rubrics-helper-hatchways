@@ -18,10 +18,10 @@ type ProgrammingSpecificsProps = {
 export const ProgrammingSpecifics = ({ notes }: ProgrammingSpecificsProps) => {
   const generated = useMemo(() => fillProgrammingSpecifics(notes), [notes]);
   return (
-    <>
-      <h2>Programming Specifics</h2>
-      <h3>Public Notes</h3>
+    <div className="box">
+      <h2 className="title is-2">Programming Specifics</h2>
+      <h3 className="title is-3">Public Notes</h3>
       <p>{generated}</p>
-    </>
+    </div>
   );
 };

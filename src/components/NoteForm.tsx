@@ -29,52 +29,71 @@ export const NoteForm = ({ onAdd }: Props): React.ReactElement => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Private Note
-        <input
-          name="private-note"
-          value={privateNote}
-          onChange={(e) => {
-            setPrivateNote(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Public Note
-        <input
-          name="public-note"
-          value={publicNote}
-          onChange={(e) => {
-            setPublicNote(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Link
-        <input
-          name="link"
-          value={link}
-          onChange={(e) => {
-            setLink(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Category
-        <select
-          name="category"
-          value={categoryIndex}
-          onChange={(e) => {
-            setCategoryIndex(parseInt(e.target.value));
-          }}
-        >
-          {Categories.map((category, index) => (
-            <option value={index}>{category.join(" - ")}</option>
-          ))}
-        </select>
-      </label>
-      <input type="submit" value="Add" />
-    </form>
+    <div className="card">
+      <form className="card-content" onSubmit={handleSubmit}>
+        <div className="field">
+          <label className="label">Private Note</label>
+          <div className="control">
+            <input
+              className="input"
+              name="private-note"
+              value={privateNote}
+              onChange={(e) => {
+                setPrivateNote(e.target.value);
+              }}
+            />
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">Public Note</label>
+          <div className="control">
+            <input
+              className="input"
+              name="public-note"
+              value={publicNote}
+              onChange={(e) => {
+                setPublicNote(e.target.value);
+              }}
+            />
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">Link</label>
+          <div className="control">
+            <input
+              className="input"
+              name="link"
+              value={link}
+              onChange={(e) => {
+                setLink(e.target.value);
+              }}
+            />
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">Category</label>
+          <div className="control">
+            <div className="select">
+              <select
+                name="category"
+                value={categoryIndex}
+                onChange={(e) => {
+                  setCategoryIndex(parseInt(e.target.value));
+                }}
+              >
+                {Categories.map((category, index) => (
+                  <option value={index}>{category.join(" - ")}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="field">
+          <div className="control">
+            <input className="button is-primary" type="submit" value="Add" />
+          </div>
+        </div>
+      </form>
+    </div>
   );
 };
