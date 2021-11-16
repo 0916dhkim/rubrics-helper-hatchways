@@ -14,6 +14,7 @@ export const NoteForm = ({ onAdd }: Props): React.ReactElement => {
   const resetForm = () => {
     setPrivateNote("");
     setPublicNote("");
+    setLink("");
     setCategoryIndex(0);
   };
 
