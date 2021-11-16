@@ -1,0 +1,14 @@
+.quickcopy {
+  position: relative;
+}
+
+.quickcopy:hover {
+  background: #f1f1f1;
+}
+
+.quickcopy:hover::after {
+  content: "📋";
+  position: absolute;
+  top: -0.25rem;
+  left: -1.5rem;
+}

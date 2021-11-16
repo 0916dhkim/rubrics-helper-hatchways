@@ -1,5 +1,6 @@
 import { MajorCategories, Note } from "../types";
 
+import { QuickCopy } from "./QuickCopy";
 import React from "react";
 
 function fillProgrammingSkils(majorCategory: string, notes: Note[]): string {
@@ -18,12 +19,12 @@ const PublicNotes = ({ notes }: PublicNotesProps): React.ReactElement => {
     <>
       {MajorCategories.map((majorCategory) => (
         <>
-          <p>
+          <QuickCopy>
             {fillProgrammingSkils(
               majorCategory,
               notes.filter((note) => note.category[0] === majorCategory)
             )}
-          </p>
+          </QuickCopy>
         </>
       ))}
     </>
@@ -47,7 +48,7 @@ const PrivateNotes = ({
           {notes
             .filter((note) => note.category[0] === category)
             .map((note) => (
-              <p>{`[${ticketName}: ${note.privateNote}]`}</p>
+              <QuickCopy>{`[${ticketName}: ${note.privateNote}]`}</QuickCopy>
             ))}
         </>
       ))}

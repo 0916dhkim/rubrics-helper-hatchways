@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 
 import { Note } from "../types";
+import { QuickCopy } from "./QuickCopy";
 
 function fillProgrammingSpecifics(notes: Note[]): string {
   if (notes.length === 0) return "";
@@ -21,7 +22,7 @@ export const ProgrammingSpecifics = ({ notes }: ProgrammingSpecificsProps) => {
     <div className="box">
       <h2 className="title is-2">Programming Specifics</h2>
       <h3 className="title is-3">Public Notes</h3>
-      <p>{generated}</p>
+      <QuickCopy>{generated}</QuickCopy>
     </div>
   );
 };
